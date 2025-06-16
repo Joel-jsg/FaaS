@@ -1,8 +1,11 @@
-I)   Sobre Function as a Service (FaaS)
+= I)   Sobre Function as a Service (FaaS)
 
-Introdução
+== Introdução
 
-Certamente já ouvimos falar em infraestrutura proprietária on-premis, ou modelos SaaS, PaaS e IaaS, mas e modelo FaaS (Function as a Service) ? Estas siglas tratam de Modelos de compartilhamento de responsabilidades conforme o contrato de cliente e provedor de nuvem. O conhecido quadro abaixo resume essa divisão de responsabilidades contratadas junto ao provedor nos tipos IaaS (Infraestruture as Service), PaaS (Platform as a Service) e SaaS (Service as a Service)
+Certamente já ouvimos falar em infraestrutura proprietária on-premis, ou modelos SaaS, PaaS e IaaS, mas e modelo FaaS (Function as a Service) ? Estas siglas tratam de Modelos de compartilhamento de responsabilidades conforme o contrato de cliente e provedor de nuvem. 
+
+O conhecido quadro abaixo resume essa divisão de responsabilidades contratadas junto ao provedor nos tipos IaaS (Infraestruture as Service), PaaS (Platform as a Service) e SaaS (Service as a Service)
+
 
 Em adição aos modelos acima, o FaaS (Function as a Service) pode ser compreendido como um subconjunto do ecossistema de computação sem servidor (Serverless). O conceito de "funções como serviço" (FaaS) é central na computação serverless, onde pedaços de código são executados em resposta a eventos, como requisições HTTP ou mensagens de fila.
 
@@ -16,133 +19,133 @@ Ao contrário do SaaS, não há milhares de players de nuvem fornecedores de Faa
 
 O modelo FaaS abrange conceitos adicionais (para mais informações acesse os links contidas nas Referências deste documento), tais como:
 
-Fn Project - Framework open source, nativa em contêineres, pode ser usado em qualquer provedor de nuvem ou on-premis. Fácil de usar, suporta diversas linguagens de programação, é extensível e tem ótimo desempenho.
+* Fn Project - Framework open source, nativa em contêineres, pode ser usado em qualquer provedor de nuvem ou on-premis. Fácil de usar, suporta diversas linguagens de programação, é extensível e tem ótimo desempenho.
 
-CloudEvents - Especificação para descrever dados de eventos de forma comum, padronizada sob a tutela da Cloud Native Computing Foundation. Simplifica a declaração e a entrega de eventos em serviços e plataformas.
+* CloudEvents - Especificação para descrever dados de eventos de forma comum, padronizada sob a tutela da Cloud Native Computing Foundation. Simplifica a declaração e a entrega de eventos em serviços e plataformas.
 
-XaaS – Anything as a Service - Ideia de que recursos de TI (como software, hardware, armazenamento, infraestrutura, segurança etc) podem ser oferecidos sob demanda como serviços
+* XaaS – Anything as a Service - Ideia de que recursos de TI (como software, hardware, armazenamento, infraestrutura, segurança etc) podem ser oferecidos sob demanda como serviços
 
-O que é Function as a Service (FaaS)?
+== O que é Function as a Service (FaaS)?
 
 Podemos conceituar FaaS sintetizando tais ideias:
 
-A capacidade de nuvem, em nível de plataforma, que permite construir e gerenciar aplicativos/microsserviços com baixo investimento inicial para escalabilidade
+* A capacidade de nuvem, em nível de plataforma, que permite construir e gerenciar aplicativos/microsserviços com baixo investimento inicial para escalabilidade
 
-Modelo em nuvem onde o provedor gerencia e provisiona a infraestrutura de servidores, assumindo a gestão da infraestrutura.
+* Modelo em nuvem onde o provedor gerencia e provisiona a infraestrutura de servidores, assumindo a gestão da infraestrutura.
 
-A construção, execução e supervisão de pacotes de aplicativo e respectivo deploy dispensa a necessidade de gerenciar servidores, terceirizando o gerenciamento de bancos de dados, gateways de API, armazenamento, mensagens e outras infraestruturas para um provedor terceirizado.
+* A construção, execução e supervisão de pacotes de aplicativo e respectivo deploy dispensa a necessidade de gerenciar servidores, terceirizando o gerenciamento de bancos de dados, gateways de API, armazenamento, mensagens e outras infraestruturas para um provedor terceirizado.
 
-O provedor FaaS assume a função, executa-a e cuida do gerenciamento da função
+* O provedor FaaS assume a função, executa-a e cuida do gerenciamento da função
 
-Como o FaaS funciona?
+== Como o FaaS funciona?
 
 Para entender o FaaS,  precisa-se conhecer dois termos chave:
 
-“Arquitetura monolítica” = É autocontido, roda independentemente de outros aplicativos, gerenciam a interface do usuário, as funções de negócios e a interface de dados.
+* “Arquitetura monolítica” = É autocontido, roda independentemente de outros aplicativos, gerenciam a interface do usuário, as funções de negócios e a interface de dados.
 
-“Arquitetura de micro serviços” = Pedaço de código que lida com algumas pequenas tarefas. Estes micros serviços são separados (embora eles formem um aplicativo inteiro juntos).
+* “Arquitetura de micro serviços” = Pedaço de código que lida com algumas pequenas tarefas. Estes micros serviços são separados (embora eles formem um aplicativo inteiro juntos).
 
 Abaixo um diagrama que mostra diferenças da arquitetura monolítica e dos micros serviços:
 
-Arquitetura monolítica vs. arquitetura de micro serviços (Fonte: )
+=== Arquitetura monolítica vs. arquitetura de micro serviços (Fonte: )
 
-Na monolítica, o programa inteiro executa a função de uma vez (como atualizar um aplicativo, por exemplo). Na arquitetura de micro serviço, pode-se executar a função (de micro serviço) independentemente. Percebe-se as diferenças, na prática, ao executar ou atualizar uma função.
+* Na monolítica, o programa inteiro executa a função de uma vez (como atualizar um aplicativo, por exemplo). Na arquitetura de micro serviço, pode-se executar a função (de micro serviço) independentemente. Percebe-se as diferenças, na prática, ao executar ou atualizar uma função.
 
-Considere que cada função FaaS deve ser responsável apenas por uma tarefa, que é executada quando seu gatilho é ativado. O FaaS usa o “modelo de execução dirigida por eventos”, o que significa que suas funções só são ativadas quando acionadas. Da mesma forma, elas não são executadas em segundo plano. Por exemplo, uma função que produz uma cópia do recibo do usuário só funcionará se o usuário disparar o evento no botão “download recibo”
+* Considere que cada função FaaS deve ser responsável apenas por uma tarefa, que é executada quando seu gatilho é ativado. O FaaS usa o “modelo de execução dirigida por eventos”, o que significa que suas funções só são ativadas quando acionadas. Da mesma forma, elas não são executadas em segundo plano. Por exemplo, uma função que produz uma cópia do recibo do usuário só funcionará se o usuário disparar o evento no botão “download recibo”
 
-Quais serviços o FaaS inclui?
+== Quais serviços o FaaS inclui?
 
 Os provedores de nuvem comumente oferecem estes serviços:
 
-Serviços de autenticação. Processos de login e autenticação para os usuários da aplicação. Gestão de identidades e acessos (IAM)
+* Serviços de autenticação. Processos de login e autenticação para os usuários da aplicação. Gestão de identidades e acessos (IAM)
 
-Serviços de banco de dados. Gerenciamento e manutenção de banco de dados.
+* Serviços de banco de dados. Gerenciamento e manutenção de banco de dados.
 
-Armazenamento de arquivos. Armazenamento de dados e arquivos para seu aplicativo
+* Armazenamento de arquivos. Armazenamento de dados e arquivos para seu aplicativo
 
-Relatórios. Alerta de erros ou ameaças à segurança em seu programa.
+* Relatórios. Alerta de erros ou ameaças à segurança em seu programa.
 
-Vantagens e Desvantagens de um modelo FaaS
+== Vantagens e Desvantagens de um modelo FaaS
 
-Vantagens:
+=== Vantagens:
 
-Time de desenvolvimento não se preocupa com infraestrutura ou implantação, apenas com a lógica da aplicação.
+* Time de desenvolvimento não se preocupa com infraestrutura ou implantação, apenas com a lógica da aplicação.
 
-O FaaS torna mais fácil e reduz o tempo de construção e implantação/deploy
+* O FaaS torna mais fácil e reduz o tempo de construção e implantação/deploy
 
-O tempo de provisionamento leva apenas segundos
+* O tempo de provisionamento leva apenas segundos
 
-Os provedores de FaaS podem executar código na maioria das linguagens, podendo acelerar a construção usando os caches e bancos de dados que o provedor oferece.
+* Os provedores de FaaS podem executar código na maioria das linguagens, podendo acelerar a construção usando os caches e bancos de dados que o provedor oferece.
 
-O modelo FaaS é escalável, o planejamento de capacidade é mais fácil. Fornecedores oferecem escalonamento horizontal além da vertical.
+* O modelo FaaS é escalável, o planejamento de capacidade é mais fácil. Fornecedores oferecem escalonamento horizontal além da vertical.
 
-Dispensa preocupação com manutenção, Recuperação de Desastres (DR), ou segurança.
+* Dispensa preocupação com manutenção, Recuperação de Desastres (DR), ou segurança.
 
-FaaS é eficiente no uso de recursos. Os players só cobram pelos recursos usados. As funções não funcionam em segundo plano, nem ficam ociosas. Não há cobrança para quando as funções ficarem ociosas.
+* FaaS é eficiente no uso de recursos. Os players só cobram pelos recursos usados. As funções não funcionam em segundo plano, nem ficam ociosas. Não há cobrança para quando as funções ficarem ociosas.
 
-Desvantagens:
+=== Desvantagens:
 
-No modelo FaaS não é instantânea a tomada de decisões sobre o servidor, segurança, ou banco de dados que o código usa. Tal papel, está com o provedor.
+* No modelo FaaS não é instantânea a tomada de decisões sobre o servidor, segurança, ou banco de dados que o código usa. Tal papel, está com o provedor.
 
-Em uma veia semelhante, a depuração (de script, de camadas, de banco de dados etc), é um pouco mais difícil, pois não há controle total sobre o backend.
+* Em uma veia semelhante, a depuração (de script, de camadas, de banco de dados etc), é um pouco mais difícil, pois não há controle total sobre o backend.
 
-Os testes são difíceis, o código consumindo FaaS nem sempre se traduz suavemente para o ambiente de testes.
+* Os testes são difíceis, o código consumindo FaaS nem sempre se traduz suavemente para o ambiente de testes.
 
-Deve-se aderir aos requisitos rigorosos do seu fornecedor FaaS. As funções FaaS só podem completar uma ação por vez, se o time de desenvolvimento não estiver acostumado a isso, precisará ajustar a escrita do código. Da mesma forma, pode-se precisar reescrever o código em aplicativos existentes para torná-lo adequado para a implantação do FaaS – assim, o FaaS é frequentemente mais adequado para novas aplicações do que para legado.
+* Deve-se aderir aos requisitos rigorosos do seu fornecedor FaaS. As funções FaaS só podem completar uma ação por vez, se o time de desenvolvimento não estiver acostumado a isso, precisará ajustar a escrita do código. Da mesma forma, pode-se precisar reescrever o código em aplicativos existentes para torná-lo adequado para a implantação do FaaS – assim, o FaaS é frequentemente mais adequado para novas aplicações do que para legado.
 
-Escolher o FaaS significa comprometer-se com um único fornecedor a longo prazo. Trabalha-se com o sistema e requisitos do fornecedor na construção dos códigos. Mudar de provedor pode exigir retrabalho de codificação e potencial interrupção de funções legadas.
+* Escolher o FaaS significa comprometer-se com um único fornecedor a longo prazo. Trabalha-se com o sistema e requisitos do fornecedor na construção dos códigos. Mudar de provedor pode exigir retrabalho de codificação e potencial interrupção de funções legadas.
 
 === Resumo:
 
-FaaS x XaaS
+==== FaaS x XaaS
 
 O termo “Qualquer coisa como serviço” contido em XaaS é amplo demais, podendo tornar o conceito XaaS difícil de entender. Pensemos em oferecimento de serviços tipicamente como plataformas on-line disponíveis para consumo com autenticação, espaços de trabalho que muitas vezes estão alojados no próprio navegador. A plataforma é executada em servidores locais ou em provedor ou em rede baseada na web.
 
-Como o modelo FaaS se relaciona com XaaS ?
+== Como o modelo FaaS se relaciona com XaaS ?
 
-Empresas XaaS fornecem uma plataforma (para mais informações, veja as referências deste documento)
+* Empresas XaaS fornecem uma plataforma (para mais informações, veja as referências deste documento)
 
-A plataforma XaaS dispensa a necessidade de ter armazenamento local, serviços web, hardware ou software personalizado.
+* A plataforma XaaS dispensa a necessidade de ter armazenamento local, serviços web, hardware ou software personalizado.
 
-Pode-se adquirir licença de produto XaaS por um período e aproveitar a extensa infraestrutura.
+* Pode-se adquirir licença de produto XaaS por um período e aproveitar a extensa infraestrutura.
 
-Seguem abaixo os 10 dos tipos mais comuns de modelos XaaS, abrangendo os diferentes negócios XaaS de mercado:
+==== Seguem abaixo os 10 dos tipos mais comuns de modelos XaaS, abrangendo os diferentes negócios XaaS de mercado:
 
-SaaS – Software como Serviço
+* SaaS – Software como Serviço
 
-Exemplo: Escritório de contabilidade que utiliza o QuickBooks Online 		(software de e contabilidade SaaS) sem precisar infraestrutura local.
+** Exemplo: Escritório de contabilidade que utiliza o QuickBooks Online 		(software de e contabilidade SaaS) sem precisar infraestrutura local.
 
-PaaS – Plataforma como Serviço
+* PaaS – Plataforma como Serviço
 
-Exemplo: Time de desenvolvedores cria aplicativo, usa o Google App Engine  para desenvolver, testar e escalar o app sem 	prover servidores ou infraestrutura.
+** Exemplo: Time de desenvolvedores cria aplicativo, usa o Google App Engine  para desenvolver, testar e escalar o app sem 	prover servidores ou infraestrutura.
 
-IaaS – Infraestrutura como Serviço
+* IaaS – Infraestrutura como Serviço
 
-Exemplo: Startup de tecnologia que usa Amazon Web Services (AWS) 	para 	hospedar seu site, banco de dados e aplicativos. A empresa paga só pelo 	que 	usa, sem manter servidores físicos.
+** Exemplo: Startup de tecnologia que usa Amazon Web Services (AWS) 	para 	hospedar seu site, banco de dados e aplicativos. A empresa paga só pelo 	que 	usa, sem manter servidores físicos.
 
-DaaS – Desktop como Serviço
+* DaaS – Desktop como Serviço
 
-Exemplo:  Empresa com atendimento remoto que usa Citrix 	para oferecer um desktop virtual padronizado a todos os funcionários,	acessado pela internet, com segurança e controle centralizados.
+** Exemplo:  Empresa com atendimento remoto que usa Citrix 	para oferecer um desktop virtual padronizado a todos os funcionários,	acessado pela internet, com segurança e controle centralizados.
 
-SECaaS – Securança como Serviço
+* SECaaS – Securança como Serviço
 
-Exemplo: e-commerce que usa o Cloudflare para proteger o site contra 	ataques DDoS e fornecer firewall e autenticação multifator como serviço.
+** Exemplo: e-commerce que usa o Cloudflare para proteger o site contra 	ataques DDoS e fornecer firewall e autenticação multifator como serviço.
 
-BaaS – Backup como Serviço
+* BaaS – Backup como Serviço
 
-Exemplo: Hospital que usa Acronis Backup para fazer backups 			automáticos dos dados dos pacientes, com armazenamento seguro em 		nuvem e recuperação rápida em caso de falha.
+** Exemplo: Hospital que usa Acronis Backup para fazer backups 			automáticos dos dados dos pacientes, com armazenamento seguro em 		nuvem e recuperação rápida em caso de falha.
 
-AaaS - Analítica como Serviço
+* AaaS - Analítica como Serviço
 
-FaaS - Funções como Serviço
+* FaaS - Funções como Serviço
 
-STaaS – Armazenamento como Serviço
+* STaaS – Armazenamento como Serviço
 
-CaaS - Contêineres como Serviço
+* CaaS - Contêineres como Serviço
 
-DBaaS – Base de dados como Serviço
+* DBaaS – Base de dados como Serviço
 
-AaaS - Autenticação como Serviço
+* AaaS - Autenticação como Serviço
 
 Ao contrário do IaaS e do PaaS, o FaaS permite locar espaço para executar funções de forma independente. Este recurso o torna mais escalável.
 
