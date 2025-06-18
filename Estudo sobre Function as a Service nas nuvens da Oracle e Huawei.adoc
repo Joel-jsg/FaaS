@@ -1,0 +1,66 @@
+
+= Estudo sobre Function as a Service nas nuvens da Oracle e Huawei
+
+== I) Sobre Function as a Service (FaaS)
+
+=== Introdução
+
+Certamente já ouvimos falar em infraestrutura proprietária on-premis, ou modelos SaaS, PaaS e IaaS, mas e modelo FaaS (Function as a Service)? Estas siglas tratam de modelos de compartilhamento de responsabilidades conforme o contrato de cliente e provedor de nuvem...
+
+== II) Vantagens e desvantagens FaaS x Plataforma de container
+
+*Plataformas de Container On-Premises*  
+São instaladas e gerenciadas localmente...
+
+|===
+| Característica | FaaS | Containers
+
+| Unidade de execução | Funções (pequenos trechos de código) | Aplicações ou microserviços completos
+| Modelo de execução | Event-driven (executa sob demanda) | Long-running (execução contínua ou sob demanda)
+|===
+
+== III) FaaS com a nuvem Oracle
+
+Oracle Function é o modelo FaaS oferecido pela nuvem da Oracle...
+
+[source,python]
+----
+def handler(ctx, data: dict = None):
+    name = data.get("name", "World")
+    return f"Hello, {name}!"
+----
+
+== IV) FaaS com a nuvem Huawei
+
+[source,python]
+----
+def handler (event, context):
+    name = event.get("name", "mundo")
+    return {
+      "statusCode": 200,
+      "isBase64Encoded": False,
+      "headers": {"Content-Type": "application/json"},
+      "body": f"Olá, {name}!"
+    }
+----
+
+== V) Extras de FaaS/Serverless para nuvens diversas
+
+Outros frameworks open source:
+
+* Fn Project
+* OpenFaaS
+* OpenFunction
+* Apache OpenWhisk
+
+== Referências
+
+* https://kinsta.com/pt/blog/function-as-a-service/
+* https://fnproject.io/
+* https://www.serverless.com/framework/docs
+* https://cloudevents.io/
+* https://github.com/cloudevents/spec/blob/main/cloudevents/spec.md
+* https://www.cncf.io/
+* https://oneclick-cloud.com/en/blog/trends/everything-as-a-service/
+* https://docs.oracle.com/pt-br/iaas/Content/Functions/Concepts/functionsconcepts.htm
+* https://support.huaweicloud.com/intl/en-us/functiongraph/index.htm
