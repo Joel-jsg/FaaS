@@ -1,11 +1,6 @@
-= Estudo sobre Function as a Service nas nuvens da Oracle e Huawei - Parte V
-:author: 
-:doctype: article
-:lang: pt-BR
+= V) Extras de FaaS/Serverless para nuvens diversas
 
-== V) Extras de FaaS/Serverless para nuvens diversas
-
-Demais Clouds que disponibilizam serviços FaaS de forma nativa (framework interno):
+== Demais Clouds que disponibilizam serviços FaaS de forma nativa (framework interno):
 
 * AWS Lambda
 * Azure Functions
@@ -20,11 +15,9 @@ Há também plugins não oficiais ou *wrappers* desenvolvidos pela comunidade pa
 
 == Serverless Frameworks
 
-Pode ser adaptado para diversos players de nuvens via SDKs, plugins ou uso de APIs REST.
-
-Mais comum em nuvens AWS, Google GCP e Azure.
-
-Não oferece suporte oficial às nuvens Oracle e Huawei Cloud, mas com desenvolvimento extra, é possível criar esse suporte via plugin ou scripts personalizados.
+* Pode ser adaptado para diversos players de nuvens via SDKs, plugins ou uso de APIs REST.
+* Mais comum em nuvens AWS, Google GCP e Azure.
+* Não oferece suporte oficial às nuvens Oracle e Huawei Cloud, mas com desenvolvimento extra, é possível criar esse suporte via plugin ou scripts personalizados.
 
 == Fn Project
 
@@ -50,12 +43,10 @@ Trata-se de plataforma agnóstica de nuvem. Rodam na plataforma de container do 
 
 * Desenvolvimento agnóstico para nuvens
 * Frameworks *cloud-native* e *open-source*, funcionam sobre Kubernetes
-
-Huawei Cloud tem o Cloud Container Engine (CCE), que pode ser usado para hospedar soluções como:
-
-* OpenFunction: plataforma serverless baseada em Knative + Distributed Application Runtime (DAPR)
-* OpenFaaS: funções como serviço usando Docker + Kubernetes
-* KubeVela: pode ser usado como camada de abstração para *deploy* de aplicações serverless em Kubernetes
+* Huawei Cloud tem o Cloud Container Engine (CCE), que pode ser usado para hospedar soluções como:
+** OpenFunction: plataforma serverless baseada em Knative + Distributed Application Runtime (DAPR)
+** OpenFaaS: funções como serviço usando Docker + Kubernetes
+** KubeVela: pode ser usado como camada de abstração para *deploy* de aplicações serverless em Kubernetes
 
 == Apache OpenWhisk (on-premises)
 
