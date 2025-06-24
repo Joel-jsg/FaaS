@@ -1,11 +1,6 @@
-= Estudo sobre Function as a Service nas nuvens da Oracle e Huawei - Parte III
-:author: 
-:doctype: article
-:lang: pt-BR
+= III) FaaS com a nuvem Oracle
 
-== III) FaaS com a nuvem Oracle
-
-=== Visão Geral
+== Visão Geral
 
 Oracle Function é o modelo FaaS oferecido pela nuvem da Oracle, nativo e framework interno. É um serviço serverless da Oracle Cloud Infrastructure (OCI) que permite executar funções sob demanda sem precisar gerenciar a infraestrutura.
 
@@ -13,7 +8,7 @@ Já há uso em produção na DTP para o projeto IND. Mais detalhes:
 - Página da Demanda: https://dataprevrj.sharepoint.com/sites/DGPS/SitePages/DTP.088973.aspx
 - Documentação Arquitetural: https://www-git.prevnet/arquitetura-corporativa/Demandas/blob/master/MGI/DA/IND%20Enderecos/DA-IND-ENDERECOS.md
 
-=== Características do Oracle Function
+== Características do Oracle Function
 
 * Totalmente gerenciado: sem necessidade de gerenciar servidores.
 * Baseado em contêineres Docker, oferecendo portabilidade e personalização de ambiente.
@@ -25,7 +20,7 @@ Já há uso em produção na DTP para o projeto IND. Mais detalhes:
 * Plataforma aberta baseada no Fn Project (Apache, Docker, CloudEvents).
 * Logs, métricas e rastreamentos nativos para troubleshooting.
 
-=== Casos de uso
+== Casos de uso
 
 * Estender aplicações SaaS
 * Criar APIs Serverless
@@ -33,36 +28,36 @@ Já há uso em produção na DTP para o projeto IND. Mais detalhes:
 * Processos de segurança (SIM)
 * Arquiteturas sem servidor
 
-=== Boas práticas de implantação
+== Boas práticas de implantação
 
 * Pipeline de implantação (CI/CD)
 * Ambiente configurado no Oracle Functions
 * Repositório de imagens de contêiner
 
-=== Integrações
+== Integrações
 
-==== Nativas
+=== Nativas
 
 * OCI API Gateway: expõe funções como REST
 * OCI Events Service: invoca funções com eventos
 * OCI Streaming / Logging
 
-==== Genéricas
+=== Genéricas
 
 * Suporte ao padrão CloudEvents
 * Notificações, fluxos de dados em tempo real, integração com Service Cloud, Jira etc.
 * Funções como parte do pipeline DevOps na OCI
 
-=== Exemplo prático (Python)
+== Exemplo prático (Python)
 
-==== Pré-requisitos
+=== Pré-requisitos
 
 * Conta na OCI
 * Oracle CLI configurado (`oci setup config`)
 * Docker instalado
 * Fn CLI instalado
 
-==== Criando o projeto
+=== Criando o projeto
 
 [source,bash]
 ----
@@ -81,7 +76,7 @@ hello-python-func/
     └── requirements.txt
 ```
 
-==== Editando a função
+=== Editando a função
 
 [source,python]
 ----
@@ -90,7 +85,7 @@ def handler(ctx, data: dict = None):
     return f"Hello, {name}!"
 ----
 
-==== Testando localmente
+=== Testando localmente
 
 [source,bash]
 ----
@@ -99,21 +94,21 @@ echo -n '{"name": "Oracle"}' | fn invoke hello
 # Resultado: "Hello, Oracle!"
 ----
 
-==== Criando aplicativo
+=== Criando aplicativo
 
 [source,bash]
 ----
 fn create app my-func-app --annotation oracle.com/oci/subnetIds='["ocid1.subnet.oc1.example"]'
 ----
 
-==== Deploy
+=== Deploy
 
 [source,bash]
 ----
 fn deploy --app my-func-app --create-app
 ----
 
-==== Executando
+=== Executando
 
 [source,bash]
 ----
@@ -121,7 +116,7 @@ echo -n '{"name": "Oracle Cloud"}' | fn invoke my-func-app hello
 # Resultado: "Hello, Oracle Cloud!"
 ----
 
-=== Expondo via API Gateway
+== Expondo via API Gateway
 
 1. Vá para Developer Services > API Management > Gateways.
 2. Crie o gateway e selecione VCN/Subnet apropriada.
@@ -134,7 +129,7 @@ echo -n '{"name": "Oracle Cloud"}' | fn invoke my-func-app hello
    - App: my-func-app
    - Function: hello
 
-==== Teste
+=== Teste
 
 [source,bash]
 ----
@@ -144,6 +139,6 @@ curl -X POST https://<gateway-id>.gateway.<region>.oci.customer-oci.com/hello/ \
 # Resposta: "Hello, OCI!"
 ----
 
-=== Segurança
+== Segurança
 
 * Para produção, configure autenticação via IAM ou JWT
