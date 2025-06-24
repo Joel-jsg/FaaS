@@ -1,4 +1,22 @@
 # Estudo sobre Function as a Service nas nuvens da Oracle e Huawei
+
+## Histórico de Revisões
+
+Data | Versão | Autor
+--- | --- | ---
+30/06/2025 | `1.0` | `Joel de Souza Guedes e José de Freitas`
+
+## Criado por:
+
+DIT/SUAS/DEAT/DAES | Descrição | Representante(s)
+--- | --- | ---
+Divisao de Arquitura e Plataformas Estruturantes - DAES | Definição da arquitetura da infraestrutura da empresa | Tiago de Pina Almeida; Tel.:(21) 3616-8057; E-mail: tiago.pina@dataprev.gov.br
+
+<br>
+<br>
+
+## Índice:
+
 * [Parte I - Sobre Function as a Service](https://github.com/Joel-jsg/FaaS/blob/main/Parte%20I%20-%20Sobre%20Function%20as%20a%20Service.adoc)
 * [Parte II - Vantagens e desvantagens FaaS x Plataforma de container](https://github.com/Joel-jsg/FaaS/blob/main/Parte%20II%20-%20Vantagens%20e%20desvantagens%20FaaS%20x%20Plataforma%20de%20container%20.adoc) 
 * [Parte III - FaaS com a nuvem Oracle](https://github.com/Joel-jsg/FaaS/blob/main/Parte%20III%20-%20FaaS%20com%20a%20nuvem%20Oracle.adoc)
