@@ -66,24 +66,25 @@ Ambos têm propósitos e características distintas, que se complementam em algu
 | Ideal para workloads esporádicos ou event-driven | Adequado para aplicações complexas ou com dependências específicas
 |===
 
-Desvantagens de FaaS e Containers
+== Desvantagens de FaaS e Containers
 
-=== FaaS
+|===
+| FaaS | Containers 
 
-Cold start pode afetar desempenho
+| Cold start pode afetar desempenho | Gerenciamento mais complexo 
+| Limitações de tempo de execução, memória e linguagem | Consumo de mais recursos mmesmo em inatividade
+| Difícil debug e teste local | Necessita orquestração para escalar eficientemente
+| Vendor lock-in comum | Custo fixo maior, especialmente em ambientes ociosos
+|===
 
-Limitações de tempo de execução, memória e linguagem
+== Resumo
 
-Difícil debug e teste local
+|===
+| FaaS | Containers 
 
-Vendor lock-in comum
+| Melhor para tarefas pequenas e event-driven | Melhor para aplicações persistentes e complexas
+| Abstração máxima da infraestrutura | Controle total sobre o ambiente
+| Escala automaticamente | Exige orquestração para escalar 
+| Limitações impostas pelo provedor  | Flexível e portável 
+|===
 
-=== Containers
-
-Gerenciamento mais complexo
-
-Consumo de mais recursos mmesmo em inatividade
-
-Necessita orquestração para escalar eficientemente
-
-Custo fixo maior, especialmente em ambientes ociosos
