@@ -1,4 +1,4 @@
-II)  Vantagens e desvantagens FaaS x Plataforma de container
+= II)  Vantagens e desvantagens FaaS x Plataforma de container
 
 Considere que existem plataformas de container on-premises, em nuvem e híbridas
 
@@ -6,13 +6,10 @@ Considere que existem plataformas de container on-premises, em nuvem e híbridas
 
 São instaladas e gerenciadas localmente, no data center. Exemplos:
 
-Kubernetes (K8s): pode ser instalado on-premises em servidores físicos ou máquinas virtuais.
-
-Red Hat OpenShift: plataforma empresarial baseada em Kubernetes, com recursos adicionais de segurança e gestão.
-
-VMware Tanzu: solução para gestão de contêineres e aplicações cloud-native, integrando-se com o ecossistema VMware.
-
-Rancher: gerenciador de clusters Kubernetes que pode ser instalado localmente.
+* Kubernetes (K8s): pode ser instalado on-premises em servidores físicos ou máquinas virtuais.
+* Red Hat OpenShift: plataforma empresarial baseada em Kubernetes, com recursos adicionais de segurança e gestão.
+* VMware Tanzu: solução para gestão de contêineres e aplicações cloud-native, integrando-se com o ecossistema VMware.
+* Rancher: gerenciador de clusters Kubernetes que pode ser instalado localmente.
 
 == Plataformas de Container na Nuvem
 
@@ -20,59 +17,54 @@ São serviços de orquestração e execução de containers como os modelos SaaS
 
 Exemplos dos principais serviços, todos orquestrados via Kubernets:
 
-Oracle Container Engine (OKE).
-
-Huawei Cloud Container Engine (CCE)
-
-Amazon Elastic Kubernetes Service (EKS):
-
-Google Kubernetes Engine (GKE):
-
-Azure Kubernetes Service (AKS):
+* Oracle Container Engine (OKE).
+* Huawei Cloud Container Engine (CCE)
+* Amazon Elastic Kubernetes Service (EKS):
+* Google Kubernetes Engine (GKE):
+* Azure Kubernetes Service (AKS):
 
 == Plataformas Híbridas
 
 Parte da infraestrutura fica on-premises e outra na nuvem, facilitando cenários de migração ou compliance. Exemplos:
 
-Red Hat OpenShift: disponível para on-premises, nuvem pública e híbrida.
-
-Anthos (Google): permite gerenciar clusters Kubernets em múltiplas nuvens e on-premises.
-
-Azure Arc: estende serviços de Azure para qualquer infraestrutura, inclusive on-premises.
+* Red Hat OpenShift: disponível para on-premises, nuvem pública e híbrida.
+* Anthos (Google): permite gerenciar clusters Kubernets em múltiplas nuvens e on-premises.
+* Azure Arc: estende serviços de Azure para qualquer infraestrutura, inclusive on-premises.
 
 == FaaS x Plataforma de containers
 
 Ambos têm propósitos e características distintas, que se complementam em alguns cenários. Segue abaixo um quadro comparativo:
 
-Relação entre FaaS e Containers
+|===
+| *Unidade de execução* | Funções (pequenos trechos de código) | Aplicações ou microserviços completos
+| *Modelo de execução* | Event-driven (executa sob demanda) | Long-running (execução contínua ou sob demanda)
+| *Gerenciamento de infra* | Totalmente gerenciado pelo provedor | Gerenciado pelo usuário ou orquestrador (ex: Kubernetes)
+| *Escalabilidade* | Automática e instantânea  | Manual ou automática via orquestrador
+| *Tempo de inicialização* | Muito rápido (cold start pode impactar)  | Mais lento comparado ao FaaS
+| *Persistência* | Stateless (sem estado entre execuções) | Pode manter estado, mas geralmente evita
+| *Observabilidade* | Limitada, depende do provedor  | Completa com ferramentas de monitoramento
+| *Ambiente de execução* | Limitado, definido pelo provedor | Personalizável com Dockerfile
+| *Casos de uso* | Tarefas curtas, APIs simples, automações, triggers | Microserviços, aplicações web, jobs, APIs mais complexas
+|===
 
-Provedores de FaaS usam containers por baixo dos panos para isolar e executar as funções FaaS.
 
-Com ferramentas como Knative ou OpenFaaS, é possível executar funções em clusters de containers (ex: Kubernetes), unindo o melhor dos dois mundos.
+== Relação entre FaaS e Containers
 
-Ambos promovem a abstração da infraestrutura em níveis diferentes. Containers fornecem um ambiente de execução consistente; FaaS trata a lógica do negócio.
+* Provedores de FaaS usam containers por baixo dos panos para isolar e executar as funções FaaS.
+* Com ferramentas como Knative ou OpenFaaS, é possível executar funções em clusters de containers (ex: Kubernetes), unindo o melhor dos dois mundos.
+* Ambos promovem a abstração da infraestrutura em níveis diferentes. Containers fornecem um ambiente de execução consistente; FaaS trata a lógica do negócio.
 
-Vantagens de FaaS e Containers
 
-=== FaaS
+== Vantagens de FaaS e Containers
 
-Alta escalabilidade automática
+|===
+| FaaS | Containers 
 
-Custo sob demanda (paga-se apenas pelo tempo de execução)
-
-Foco no código, sem se preocupar com a infraestrutura
-
-Ideal para workloads esporádicos ou event-driven
-
-=== Containers
-
-Ambiente padronizado e portátil (Docker)
-
-Flexibilidade e controle total sobre o ambiente de execução
-
-Suporte a ferramentas de orquestração (como Kubernetes)
-
-Adequado para aplicações complexas ou com dependências específicas
+| Alta escalabilidade automática | Ambiente padronizado e portátil (Docker) 
+| Custo sob demanda (paga-se apenas pelo tempo de execução) | Flexibilidade e controle total sobre o ambiente de execução
+| Foco no código, sem se preocupar com a infraestrutura | Suporte a ferramentas de orquestração (como Kubernetes)
+| Ideal para workloads esporádicos ou event-driven | Adequado para aplicações complexas ou com dependências específicas
+|===
 
 Desvantagens de FaaS e Containers
 
