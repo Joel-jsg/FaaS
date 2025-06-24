@@ -6,6 +6,7 @@ Certamente já ouvimos falar em infraestrutura proprietária on-premis, ou model
 
 O conhecido quadro abaixo resume essa divisão de responsabilidades contratadas junto ao provedor nos tipos IaaS (Infraestruture as Service), PaaS (Platform as a Service) e SaaS (Service as a Service)
 
+image::Imagens/Parte1Img1.png[]
 
 Em adição aos modelos acima, o FaaS (Function as a Service) pode ser compreendido como um subconjunto do ecossistema de computação sem servidor (Serverless). O conceito de "funções como serviço" (FaaS) é central na computação serverless, onde pedaços de código são executados em resposta a eventos, como requisições HTTP ou mensagens de fila.
 
@@ -46,6 +47,9 @@ Para entender o FaaS,  precisa-se conhecer dois termos chave:
 * “Arquitetura de micro serviços” = Pedaço de código que lida com algumas pequenas tarefas. Estes micros serviços são separados (embora eles formem um aplicativo inteiro juntos).
 
 Abaixo um diagrama que mostra diferenças da arquitetura monolítica e dos micros serviços:
+
+image::Imagens/Parte1Img2.png[]
+
 
 === Arquitetura monolítica vs. arquitetura de micro serviços (Fonte: )
 
@@ -96,12 +100,24 @@ Os provedores de nuvem comumente oferecem estes serviços:
 * Escolher o FaaS significa comprometer-se com um único fornecedor a longo prazo. Trabalha-se com o sistema e requisitos do fornecedor na construção dos códigos. Mudar de provedor pode exigir retrabalho de codificação e potencial interrupção de funções legadas.
 
 === Resumo:
+|===
+| Vantagens | Desvantagens 
+
+| Implanta código mais rápido | Perda de controle sobre o servidor 
+| Provisionamento leva segundos | Depuração de código é mais difícil 
+| Código em diversas linguagens | Testes levam mais tempo 
+| Recuperação automática de desastres (DR) | Modelo vendor lock-in 
+| Custo eficiente | Escrita de código SaaS suitable 
+| Escalável |  
+|===
 
 ==== FaaS x XaaS
 
 O termo “Qualquer coisa como serviço” contido em XaaS é amplo demais, podendo tornar o conceito XaaS difícil de entender. Pensemos em oferecimento de serviços tipicamente como plataformas on-line disponíveis para consumo com autenticação, espaços de trabalho que muitas vezes estão alojados no próprio navegador. A plataforma é executada em servidores locais ou em provedor ou em rede baseada na web.
 
 == Como o modelo FaaS se relaciona com XaaS ?
+
+image::Imagens/Parte1Img3.png[]
 
 * Empresas XaaS fornecem uma plataforma (para mais informações, veja as referências deste documento)
 
@@ -150,3 +166,5 @@ O termo “Qualquer coisa como serviço” contido em XaaS é amplo demais, pode
 Ao contrário do IaaS e do PaaS, o FaaS permite locar espaço para executar funções de forma independente. Este recurso o torna mais escalável.
 
 Segue um pequeno resumo de como os três funcionam de forma diferente:
+
+image::Imagens/Parte1Img4.png[]
