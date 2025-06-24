@@ -1,11 +1,6 @@
-= Estudo sobre Function as a Service nas nuvens da Oracle e Huawei - Parte IV
-:author: 
-:doctype: article
-:lang: pt-BR
+= IV - FaaS com a nuvem Huawei
 
-== IV - FaaS com a nuvem Huawei
-
-=== Visão Geral
+== Visão Geral
 
 A Huawei oferece uma solução FaaS via serviço/framework interno FunctionGraph, que faz parte da nuvem Huawei Cloud.
 
@@ -13,25 +8,25 @@ O FunctionGraph permite que desenvolvedores executem código em resposta a event
 
 Use a CLI oficial da Huawei para fazer *deploy* de funções serverless (FunctionGraph).
 
-=== Características do FunctionGraph
+Processo e esquema de uso:
+
+image::Imagens/ParteIVImg1.png[]
+
+image::Imagens/ParteIVImg2.png[]
+
+== Características do FunctionGraph
 
 * Execução baseada em eventos:
-** Suporta gatilhos como chamadas HTTP (API Gateway), mudanças em banco de dados, mensagens de fila (DIS, Kafka etc.), armazenamento (OBS-Object Storage) e outros.
+Suporta gatilhos como chamadas HTTP (API Gateway), mudanças em banco de dados, mensagens de fila (DIS, Kafka etc.), armazenamento (OBS-Object Storage) e outros.
 * Suporte a várias linguagens
 * Permite executar funções personalizadas via container (com imagens Docker).
 * Escalabilidade automática com base na demanda, sem necessidade de configuração manual.
-
-==== Gerenciamento e monitoração:
-
-* Suporte nativo para logs e métricas via Cloud Eye e AOM (Application Operations Management).
-
-==== Ambiente seguro e isolado:
-
-* Funções executadas em ambientes preemptivos, com controle de permissões via IAM (Identity and Access Management).
-
-==== Criação de APIs Serverless:
-
-* Pode ser integrado com API Gateway para construção de backends serverless.
+* Gerenciamento e monitoração:
+Suporte nativo para logs e métricas via Cloud Eye e AOM (Application Operations Management).
+* Ambiente seguro e isolado:
+Funções executadas em ambientes preemptivos, com controle de permissões via IAM (Identity and Access Management).
+* Criação de APIs Serverless:
+Pode ser integrado com API Gateway para construção de backends serverless.
 
 === Cenários / casos de uso comuns:
 
@@ -42,7 +37,7 @@ Use a CLI oficial da Huawei para fazer *deploy* de funções serverless (Functio
 * Webhooks e APIs
 * Aplicativos de IA com serviços de EI, inferência de IA e reconhecimento de placas
 
-=== Integrações
+== Integrações
 
 Integra com serviços como:
 
@@ -53,7 +48,7 @@ Integra com serviços como:
 
 O FunctionGraph permite funções avançadas com acesso a banco de dados, filas, processamento de arquivos etc.
 
-=== Exemplo prático: Criar e implantar uma função simples (em Python)
+== Exemplo prático: Criar e implantar uma função simples (em Python)
 
 1. Acesse o Console Huawei Cloud: https://console.huaweicloud.com/functiongraph
 2. Faça login na sua conta.
