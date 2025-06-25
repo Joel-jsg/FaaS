@@ -490,3 +490,95 @@ def handler(event, context):
 ** Configure um endpoint e método (GET, POST)
 ** Após publicado, haverá uma URL pública para a função
 
+
+
+= V. Extras de FaaS/Serverless para nuvens diversas
+
+== Demais Clouds que disponibilizam serviços FaaS de forma nativa (framework interno):
+
+* AWS Lambda
+* Azure Functions
+* IBM Cloud Functions
+* Google Cloud Functions
+* Alibaba Cloud
+* Cloudflare Workers
+
+Desejando algo pronto, integrado, nativo, dispensando desenvolvimento e adaptações, use os serviços nativos ou frameworks internos das nuvens (como FunctionGraph, nuvem da Huawei e Oracle Functions, nuvem da Oracle).
+
+Há também plugins não oficiais ou *wrappers* desenvolvidos pela comunidade para a integração (uma busca no GitHub pode ajudar).
+
+== Serverless Frameworks
+
+* Pode ser adaptado para diversos players de nuvens via SDKs, plugins ou uso de APIs REST.
+* Mais comum em nuvens AWS, Google GCP e Azure.
+* Não oferece suporte oficial às nuvens Oracle e Huawei Cloud, mas com desenvolvimento extra, é possível criar esse suporte via plugin ou scripts personalizados.
+
+== Fn Project
+
+Framework *open source* criado originalmente pela Oracle. Pode ser executado localmente, em qualquer provedor de nuvem, ou na Oracle Cloud.
+
+* Viabiliza a portabilidade entre players (com adaptações)
+* Permite controle do backend de execução das funções
+
+== Terraform + Oracle Cloud (com Fn Project)
+
+Pode-se usar o Terraform para implantar funções serverless com Fn na Oracle Cloud.
+
+Cenário típico: Automatizar o *deployment* de funções serverless na OCI junto com outros recursos.
+
+== OpenFaaS (com suporte customizado) e OpenFunction
+
+Trata-se de plataforma agnóstica de nuvem. Rodam na plataforma de container do provedor de nuvem e também em ambientes *on-premises*.
+
+* Plataforma FaaS *open source* que pode ser implantada em Kubernetes.
+* Pode ser usada para construir soluções serverless em ambientes Huawei CCE e Oracle OCI personalizados.
+
+== OpenFunction / KubeVela / OpenFaaS (com Kubernetes + Huawei CCE)
+
+* Desenvolvimento agnóstico para nuvens
+* Frameworks *cloud-native* e *open-source*, funcionam sobre Kubernetes
+* Huawei Cloud tem o Cloud Container Engine (CCE), que pode ser usado para hospedar soluções como:
+** OpenFunction: plataforma serverless baseada em Knative + Distributed Application Runtime (DAPR)
+** OpenFaaS: funções como serviço usando Docker + Kubernetes
+** KubeVela: pode ser usado como camada de abstração para *deploy* de aplicações serverless em Kubernetes
+
+== Apache OpenWhisk (on-premises)
+
+* Framework serverless *open-source*
+* Pode ser hospedado no ECS ou CCE da Huawei
+* Flexível, mas exige mais configuração e manutenção
+
+
+
+
+## Referências 
+
+### 1. FaaS/Serverless Genérico: 
+
+* FaaS: https://kinsta.com/pt/blog/function-as-a-service/ 
+* Precursor do OracleFunctions: https://fnproject.io/ 
+* Framework Serverless: https://www.serverless.com/framework/docs
+* XaaS: https://oneclick-cloud.com/en/blog/trends/everything-as-a-service/
+* CloudEvents
+  - Comunidade: https://cloudevents.io/  
+  - Padrões: https://github.com/cloudevents/spec/blob/main/cloudevents/spec.md 
+  - Tutor Cloud Native Computing Foundation: https://www.cncf.io/ 
+
+
+### 2. Documentação oficial Oracle Functions  
+* https://docs.oracle.com/en-us/iaas/Content/Functions/Concepts/functionsoverview.htm 
+* Serviço OCI Functions: https://docs.oracle.com/pt-br/iaas/Content/Functions/Concepts/functionsconcepts.htm 
+* Cloud Functions e Casos de uso: https://www.oracle.com/br/cloud/cloud-native/functions/ 
+* Implantando em funções: https://docs.oracle.com/en-us/iaas/Content/devops/using/deploy_function.htm 
+* Criando um ambiente de funções: https://docs.oracle.com/en-us/iaas/Content/devops/using/create_function_environment.htm#create_function_environment 
+* Adicionando artefato de repositório: https://docs.oracle.com/en-us/iaas/Content/devops/using/containerimage_repository_artifact.htm#create_container_image_repository_artifact 
+* Criando um pipeline: https://docs.oracle.com/en-us/iaas/Content/devops/using/containerimage_repository_artifact.htm#create_container_image_repository_artifact 
+* Funções prontas: https://github.com/oracle-samples/oracle-functions-samples 
+
+### 3. Documentação oficial Huawei Functiongraph 
+* Tutorial: https://support.huaweicloud.com/intl/en-us/functiongraph/index.htm 
+* Infográficos de processos: https://support.huaweicloud.com/intl/en-us/productdesc-functiongraph/functiongraph_01_0110.html
+* Autenticação: https://console.huaweicloud.com/functiongraph 
+* Visão Geral: https://www.huaweicloud.com/intl/en-us/product/functiongraph.html 
+* FAQ: https://support.huaweicloud.com/intl/en-us/functiongraph_faq/functiongraph_03_0120.html 
+* Cenários de aplicação: https://support.huaweicloud.com/intl/en-us/productdesc-functiongraph/functiongraph_01_0140.html 
